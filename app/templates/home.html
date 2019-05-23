@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>CorkBoardIt: Home</title>
+        <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+      <div class="container">
+<!--  ................................Home page header....................   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-5">
+              <div class="row">
+                  <h4><font color="green">Home Page for</font></h4>
+              </div>
+              <div class="row">
+                  <h2><font color="green">{{ first_name }} {{ last_name }}</font></h2>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="row">
+                  <h2><font color="blue">CorkBoard</font><font color="red">It</font></h2>
+              </div>
+              <div class="row">
+                  <h4><font color="orange">Explore. Share. Inspire.</font></h4>
+              </div>
+            </div>
+          </div>
+<!--  ................................Recent CorkBoard Updates header....................   -->
+          <div class="row row-header">
+            <div class="col-xs-12 col-sm-5">
+              <div class="row">
+                  <h4>Recent CorkBoard Updates</h4>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="row">
+                 <form action="/popular-tags" method="GET" class="form-horizontal" role="form">
+                   <button type="submit" class="btn btn-default">Popular Tags</button>
+                 </form>
+              </div>
+            </div>
+          </div>
+<!--  ................................Recent CorkBoards ...................   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-6 ">
+
+              <ul class="list-group">
+                {% if recent_board==[] %}
+                <div><h2>No updates!</h2></div>
+                {% else %}
+                {% for recent in recent_board %}
+                  <li class="list-group-item"><font size='3'><a href="{{recent[8]}}"><b>{{recent[2]}}</font></b></a>
+                    {% if recent[3] == 'Private' %} <font color="red">({{recent[3]}}) </font> {% endif %}
+                    <br>
+                    <font size="2">Updated by <b>{{recent[0]}} {{recent[1]}}</b> on <b>{{recent[6]}}</b> at <b>{{recent[7]}}</b></font>
+                  </li>
+                {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+<!--  ................................My CorkBoards header....................   -->
+          <div class="row row-header">
+            <div class="col-xs-12 col-sm-2">
+              <div class="row">
+                  <h4>My CorkBoards</h4>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <div class="row">
+                  <form action="/add-corkboard" method="GET" class="form-horizontal" role="form">
+                    <button type="submit" class="btn btn-primary">Add CorkBoard</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+
+<!--  ................................My CorkBoards list ...................   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-6 ">
+              {% if boards_pin_num == [] %}
+              <div><h2>You have no CorkBoards</h2></div>
+              {% else %}
+              <ul class="list-group">
+                {% for board in boards_pin_num %}
+                  <li class="list-group-item"><font size="3"><a href={{board[4]}}><b>{{board[0]}}</b></a></font> {% if board[1] == 'Private' %} <font color="red">({{board[1]}}) </font> {% endif %}with {{board[2]}} PushPins</li>
+                {% endfor %}
+
+              {% endif %}
+              </ul>
+            </div>
+          </div>
+<!-- .....................Popular Sites and CorkBoard Statistics............   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-5">
+              <div class="row">
+                  <form action="/popular-sites" method="GET" class="form-horizontal" role="form">
+                    <button type="submit" class="btn btn-default">Popular Sites</button>
+                  </form>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+              <div class="row">
+                 <form action="/corkboard-statistics" method="GET" class="form-horizontal" role="form">
+                   <button type="submit" class="btn btn-default">CorkBoard Statistics</button>
+                 </form>
+              </div>
+            </div>
+          </div>
+<!--  ................................PushPin Search .......................   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-12">
+             <form action="/pushpin-search" method="POST" class="form-horizontal" role="form">
+                <div class="form-group">
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="pinsearchinput" name="pinsearchinput" placeholder="Search description, tags and CorkBoard category">
+                  </div>
+                  <div class="col-sm-3">
+                        <button type="submit" class="btn btn-default">PushPin Search</button>
+                  </div>
+                </div>
+             </form>
+            </div>
+
+          </div>
+      </div>
+      <footer class="row-footer">
+          <div class="container">
+              <div class="row" >
+                  <b>Links - </b>
+                  <a href="{{url_for('login')}}"> Logout</a>
+              </div>
+          </div>
+      </footer>
+    </body>
+</html>

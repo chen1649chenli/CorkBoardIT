@@ -1,0 +1,3 @@
+The SQL code for Team074's project are in the following files:
+mysql/sql-scripts/CreateTable.sql
+app/routes.py

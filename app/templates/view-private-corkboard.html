@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CorkBoardIt: Password Protected</title>
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h4>Password Protected</h4>
+        <div class="row row-content" >
+          <div class="col-xs-12 col-sm-6" >
+            <div class="row row-content" style="background-color:#f2f2f2; padding:15px">
+              <div class="col-xs-12 col-sm-2" >
+                  <br>
+                  <img src="{{ url_for('static', filename='img/no-entry.svg') }}" alt="Pin image" class="img-responsive">
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                  <h4><font color="red">The CorkBoard you are <br> trying to view is private.<br> Please enter the CorkBoard’s <br>password to continue.</font></h4>
+              </div>
+           </div>
+
+          <div class="row row-content" style="padding:15px">
+
+            <!-- Password -->
+            <form method="POST" class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="passwordid" class="col-sm-2 control-label" style="font-weight: normal">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="passwordid" name="passwordid">
+                </div>
+              </div>
+
+             <!-- Cancel/Ok button -->
+              <div class="form-group pull-right">
+
+                    <button type="submit" name="button"  value ="cancelbutton" class="btn btn-default">Cancel</button>
+                    <button type="submit" name = "button" value ="okbutton" class="btn btn-primary">Ok</button>
+              </div>
+            </form>
+    </div>
+  </div>
+</body>
+
+</html>

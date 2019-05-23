@@ -1,0 +1,74 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block content %}
+    <div class="container" style="background-color:#f2f2f2">
+
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-push-10">
+              <div class="row">
+                  <h2><font color="blue">CorkBoard</font><font color="red">It</font></h2>
+              </div>
+              <div class="row">
+                  <h4><font color="orange">Explore. Share. Inspire.</font></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-content">
+              <div class="col-xs-12 col-sm-6">
+                <form action="/add-corkboard" method="POST" class="form-horizontal" role="form">
+
+                 <div class="form-group">
+                    <label for="addcorkboardid" class="col-sm-3 control-label" style="font-weight>
+                      <div class="row row-header></label>
+                          <div class="row" id="addcorkboardid">
+                              <p><font size="6">Add CorkBoard</font></p>
+                          </div>
+                  </div>
+                  <!-- Title -->
+                  <div class="form-group">
+                    <label for="titleid" class="col-sm-3 control-label" style="font-weight: normal">Title</label>
+                    <div class="col-sm-9">
+                      <input type="name" class="form-control" id="titleid" name="titleid" placeholder="Enter a Title" maxlength="50" required>
+                    </div>
+                  </div>
+
+                  <!-- Category -->
+                  <div class="form-group">
+                    <label for="categoryid" class="col-sm-3 control-label" style="font-weight: normal">Category</label>
+                    <div class="col-sm-9">
+                      <select name= categoryid method="GET" action="/" id = "categoryid" required>
+                        {% for category in category %}
+                        <option value= "{{category}}" SELECTED>{{category}}</option>"
+                        {% endfor %}
+                    </select>
+                    </div>
+                  </div>
+
+                  <!-- Visibility -->
+                  <div class="form-group">
+                    <label for="visibilityid" class="col-sm-3 control-label" style="font-weight: normal">Visibility</label>
+                    <div class="col-sm-9" id = "visibilityid">
+                        <input type="radio" name="visibilityid" value="Public" required> Public<br>
+                        <input type="radio" name="visibilityid" value="Private"> Private <input type="password" name="inputpassword" id="inputpassword"  placeholder="Enter Password"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                    </div>
+                  </div>
+
+                  <!-- Add button -->
+                  <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: .
+    restart: always
+    links:
+      - db
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/corkboardit
+
+  db:
+    build: './mysql'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: securepass
+    ports:
+      - "3306:3306"

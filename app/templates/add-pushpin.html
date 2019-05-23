@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CorkBoardIt: Add Pushpin</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container" style="background-color:#f2f2f2; padding:15px">
+      <p>Add PushPin to CorkBoard</p>
+          <div class="row row-content" >
+            <div class="col-xs-12 col-sm-6" >
+
+              <div class="row row-content" >
+                <div class="col-xs-12 col-sm-10">
+                    <h1>Add Pushpin</h1>
+                    <h3>to {{ corkboard_name }} </h3>
+                </div>
+                <div class="col-xs-12 col-sm-2" >
+                    <br>
+                    <img src="{{ url_for('static', filename='img/push-pin.png') }}" alt="Pin image" class="img-responsive">
+                </div>
+             </div>
+
+            <div class="row row-content" style="padding:15px">
+              <!-- URL -->
+              <form method="POST" action="/add-pushpin" class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="urlid" class="col-sm-2 control-label"><b>URL</b></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="urlid" name="urlid" placeholder="Supports img, png and gif format.">
+                    <span class="error" name="url_error" id="url_error"><font color="red">Only supports image format of jpg, png and gif.</font></span>
+                  </div>
+                </div>
+               <!-- Description -->
+                <div class="form-group">
+                  <label for="descid" class="col-sm-2 control-label"><b>Description</b></label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="descid" name="descid" rows="3" maxlength="200" placeholder="Maximum 200 characters"></textarea>
+                  </div>
+                </div>
+                <!-- Tag -->
+                <div class="form-group">
+                  <label for="tagid" class="col-sm-2 control-label">Tags</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tagid" name="tagid" placeholder="Less than 20 characters per tag.">
+                    <span class="error" name="tag_error" id="tag_error"><font color="red">Each tag should be less than 20 characters.</font></span>
+                  </div>
+                </div>
+                  <!-- Add button-->
+               <div class="form-group pull-right ">
+                 <div class="col-sm-10">
+                   <button type="submit" name = "addbutton" id="addbutton" value ="addbutton" class="btn btn-primary">Add</button>
+                 </div>
+               </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src= "{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src= "{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src= "{{ url_for('static', filename='js/submit_disable.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <footer class="row-footer">
+        <div class="container">
+            <div class="row">
+                <b>Links - </b>
+                <a href="{{ url_for('login') }}"> Logout</a>
+                <a href="{{ home_url }}"> | Home</a>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>CorkBoardIt: Login</title>
+        <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+      <div class="container">
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-6 text-right">
+
+            <div class="row">
+                <h2><font color="blue">CorkBoard</font><font color="red">It</font></h2>
+
+            </div>
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-3 pull-right">
+                  <h4><font color="orange">Explore.</font></h4>
+                  <h4><font color="orange">Share.</font></h4>
+                  <h4><font color="orange">Inspire.</font></h4>
+                </div>
+                <div class="col-xs-12 col-sm-2 pull-right">
+                    <img src="{{ url_for('static', filename='img/push-pin.png') }}" alt="Pin image" class="img-responsive">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-content">
+              <div class="col-xs-12 col-sm-6">
+                {% if error %}
+                <div class="alert alert-danger"> Invaid Email Account or PIN! </div>
+                {% endif %}
+
+                <form action="/login" method="POST" class="form-horizontal" role="form">
+                  <!-- Email -->
+                  <div class="form-group">
+                    <label for="emailid" class="col-sm-3 control-label" style="font-weight: normal">Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter your email account">
+                    </div>
+                  </div>
+
+                  <!-- PIN -->
+                  <div class="form-group">
+                    <label for="pinid" class="col-sm-3 control-label" style="font-weight: normal">PIN</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="pinid" name="pinid" placeholder="Enter your 4-digit Pin">
+                    </div>
+                  </div>
+
+                  <!-- Login button -->
+                  <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>CorkBoardIt: Popular Sites</title>
+        <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+    <!-- popular tags header -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                  <h2 align=right><font color="blue">CorkBoard</font><font color="red">It</font></h2>
+                </div>
+                <div class="row">
+                  <h4 align=right><font color="orange">Explore. Share. Inspire.</font></h4>
+                </div>
+            </div>            
+          </div>
+          <div class="row row-header">
+            <div class="col-xs-12 col-sm-5">
+              <div class="row">
+                <h2>Popular Sites</h2>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="container">
+      {% if url == [] %}
+      <h4>No PushPin Sites</h4>
+      {% else %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>
+              <h4><u><b>Site</b></u></h4>
+              {% for domain in url %}
+                <li class="list-group-item"><font size="2"><b>{{domain}}</b></font></li>
+              {% endfor %}
+            </th>
+            <th>
+              <h4><u><b>PushPins</b></u></h4>
+              {% for count in pushPinCount %}
+                <li class="list-group-item"><font size="2"><b>{{count}}</b></font></li>
+              {% endfor %}
+            </th>
+          </tr>
+        </thead>
+      </table>
+      {% endif %}
+    </div>
+          <footer class="row-footer">
+          <div class="container">
+              <div class="row" >
+                  <b>Links - </b>
+                  <a href="{{url_for('login')}}"> Logout</a>
+                  <a href="{{ home_url }}"> | Home</a>
+              </div>
+          </div>
+      </footer>
+  </body>
+</html>

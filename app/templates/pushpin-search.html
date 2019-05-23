@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>CorkBoardIt: Home</title>
+        <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
+    <style>
+      li.borderless {
+        border: 0 none;
+      }
+  </style>
+  </head>
+
+  <body>
+      <div class="container">
+<!--  ................................Home page header....................   -->
+          <div class="row row-content">
+            <div class="col-xs-12 col-sm-5">
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="row">
+                  <h2><font color="blue">CorkBoard</font><font color="red">It</font></h2>
+              </div>
+              <div class="row">
+                  <h4><font color="orange">Explore. Share. Inspire.</font></h4>
+              </div>
+            </div>
+          </div>
+
+<!--  ................................Recnet CorkBoard Updates header....................   -->
+          <div class="row row-header">
+            <div class="col-xs-12 col-sm-6">
+              <div class="row">
+                  <h2>PushPin Search Results</h2>
+              </div>
+            </div>
+          </div>
+<!--  ................................My CorkBoards list ...................   -->
+          {% if pushPinDescription == [] %}
+            <h2>No Search Result Returned</h2>
+          {% else %}
+            <table class="table">
+                  <thead>
+                     <tr>
+                      <th scope="col" class="text-center">
+                        <h4><u><b>PushPin Description</b></u></h4>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <h4><u><b>Corkboard</b></u></h4>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <h4><u><b>Owner</b></u></h4>
+                      </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                      {% for description,  url_value, title, owner in zip(pushPinDescription, url, corkboardTitle, corkboardOwner) %}
+                      <tr scope="col">
+                        {% if description == "" %}
+                         <td class="text-center"> 
+                          <li class="list-group-item borderless"><font size="2"><a href={{url_value}}><b>&nbsp;</b></a></font> </li>
+                         </td>
+                        {% else %}
+                        <td class="text-center">
+                          <li class="list-group-item borderless"><font size="2"><a href={{url_value}}><b>{{description}}</b></a></font> </li>
+                        </td>
+                        {% endif %}
+                        <td class="text-center">
+                          <li class="list-group-item borderless"><font size="2"><b>{{title}}</b></font> </li>
+                        </td>
+                        <td class="text-center">
+                          <li class="list-group-item borderless"><font size="2"><b>{{owner}}</b></font> </li>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+                {% endif %}
+
+      </div>
+      <footer class="row-footer">
+          <div class="container">
+              <div class="row" >
+                  <b>Links - </b>
+                  <a href="{{url_for('login')}}"> Logout</a>
+              </div>
+          </div>
+      </footer>
+    </body>
+</html>
