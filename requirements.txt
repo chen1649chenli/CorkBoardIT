@@ -11,7 +11,7 @@ Flask-Migrate==2.2.1
 Flask-WTF==0.14.2
 idna==2.7
 Jinja2==2.10
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 mysql-connector==2.1.6
 pycparser==2.19
